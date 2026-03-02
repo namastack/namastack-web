@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.namastack.io/sitemap.xml
+Host: https://www.namastack.io
+

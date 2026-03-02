@@ -1,36 +1,119 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Namastack - Landing Website
 
-## Getting Started
+This repository contains the Namastack master landing site built with Next.js. It showcases the
+Namastack Outbox project (an open-source transactional outbox for Spring Boot) and provides
+documentation, feature highlights, and legal information.
 
-First, run the development server:
+The site uses:
+
+- Next.js (App Router)
+- Tailwind CSS for styling
+- Framer Motion for smooth UI animations
+- Vanta.js (Topology) for the animated hero background
+- p5 and three (runtime for Vanta effects)
+
+This README gives a concise guide to running, building, and contributing to the landing site.
+
+---
+
+## Quick start
+
+Requirements:
+
+- Node.js 18+ (recommended)
+- npm (or yarn / pnpm)
+
+Install dependencies and run the dev server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Available scripts (from `package.json`):
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev    # start Next.js dev server
+npm run build  # build a production version
+npm run start  # start the production server (after build)
+npm run lint   # run ESLint
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Project structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `app/` — Next.js App Router pages and layout
+    - `app/page.tsx` — main landing page that composes all sections
+    - `app/legal/page.tsx` — legal notice & privacy page
+    - `app/globals.css` — global Tailwind CSS config + theme variables
+- `components/` — React components used by the landing page
+    - `Hero.tsx` — animated hero with Vanta background and logo
+    - `VantaBackground.tsx` — wrapper that loads Vanta (topology) and p5
+    - `About.tsx`, `FeaturedProject.tsx`, `Reliability.tsx`, `CTA.tsx`, `Footer.tsx` — site sections
+- `public/` — static assets (logo, icons, SVGs)
+- `legal-notice.md` — source legal content used on `/legal`
+- `package.json` — project dependencies & scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Development notes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- The Hero animation uses Vanta's Topology effect which depends on `p5` at runtime. The
+  `VantaBackground` component dynamically loads p5 and the Vanta script only in the browser to avoid
+  SSR issues.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Framer Motion's `useScroll` and `useTransform` are used to create a scroll-linked effect so hero
+  content fades/moves as the user scrolls.
+
+- Tailwind CSS is configured via `app/globals.css`. Adjust CSS variables there (for colors, primary
+  accent, etc.).
+
+---
+
+## Deploying
+
+This site is optimized for deployment on Vercel (the creators of Next.js). To deploy:
+
+1. Push the repository to GitHub (or another Git host)
+2. Import the project on Vercel and follow the prompts
+
+Vercel will run `npm run build` automatically. The site expects static prerendering for the main
+pages and will work out-of-the-box on Vercel.
+
+---
+
+## Contributing
+
+Contributions are welcome. Typical contribution workflow:
+
+1. Fork the repository
+2. Create a feature branch
+3. Run and test locally
+4. Open a pull request with a clear description
+
+---
+
+## License
+
+This website, including source code, text, images, and other assets in this repository, is the
+personal homepage and project site for Namastack and its maintainer. It is not intended to be
+reused or redistributed.
+
+All rights reserved. © 2026 Namastack (Roland Beisel).
+
+If you need permission to reuse any portion of this repository (for example, code snippets,
+images, or documentation), please contact the maintainer listed in the legal notice at `/legal`.
+
+---
+
+## Contact
+
+If you need help or want to discuss the project, open an issue or contact the maintainer listed in
+the legal notice (`/legal`).
+
+---
+
+_Last updated: March 2026_

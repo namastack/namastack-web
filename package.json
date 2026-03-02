@@ -4,16 +4,24 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/generate-og-png.js && node scripts/generate-logo-png.js",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "generate-og-png": "node scripts/generate-og-png.js",
+    "generate-logo-png": "node scripts/generate-logo-png.js"
   },
   "dependencies": {
+    "framer-motion": "^12.34.3",
     "next": "16.1.6",
+    "p5": "^2.2.2",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "three": "^0.183.2",
+    "vanta": "^0.5.24"
   },
   "devDependencies": {
+    "sharp": "^0.32.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -22,5 +30,6 @@
     "eslint-config-next": "16.1.6",
     "tailwindcss": "^4",
     "typescript": "^5"
-  }
+  },
+  "license": "UNLICENSED"
 }
