@@ -1,3 +1,5 @@
+import CookieConsentComponent from '../components/CookieConsent';
+
 export default function Footer() {
   return (
     <footer className="py-10 bg-[var(--background)] border-t border-[var(--border)]">
@@ -6,6 +8,7 @@ export default function Footer() {
           &copy; {new Date().getFullYear()} Namastack. All rights reserved.
         </p>
         <nav className="flex items-center gap-6 text-sm text-[var(--muted)]">
+          <CookieConsentComponent />
           <a
             href="/outbox"
             className="hover:text-white transition-colors duration-200"

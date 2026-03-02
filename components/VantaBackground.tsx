@@ -7,21 +7,6 @@ declare global {
   }
 }
 
-/**
- * VantaBackground
- *
- * Docusaurus-compatible Vanta.js TOPOLOGY background component.
- * - Scripts loaded client-side only (via useEffect)
- * - Handles window resize by debounced destroy + reinit to avoid p5 canvas errors
- *
- * Props:
- *   children    – content rendered on top of the animation
- *   options     – Vanta TOPOLOGY options to override defaults
- *   style       – additional styles for the wrapper div
- *   className   – additional class names for the wrapper div
- *   minHeight   – minimum height of the container (default: '100vh')
- */
-
 const CDN_P5    = 'https://cdnjs.cloudflare.com/ajax/libs/p5.js/2.0.5/p5.min.js';
 const CDN_VANTA = 'https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.topology.min.js';
 
