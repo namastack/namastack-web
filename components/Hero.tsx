@@ -62,7 +62,7 @@ export default function Hero() {
                 />
               </picture>
 
-              <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-white mb-4 tracking-tight">
+              <h1 className="text-7xl sm:text-8xl md:text-9xl lg:text-[120px] leading-tight font-extrabold text-white mb-4 tracking-tight">
                 Namastack
               </h1>
 
