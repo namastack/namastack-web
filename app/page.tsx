@@ -8,10 +8,10 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Namastack — Reliable event-driven architecture',
-  description: 'Namastack Outbox: transactional outbox for Spring Boot. Reliable delivery, seamless integration, production-ready.',
+  description: 'Namastack delivers production-ready infrastructure for event-driven systems - resilient, observable, and easy to integrate with Spring Boot and modern microservices, empowering teams to ship reliable distributed applications.',
   openGraph: {
     title: 'Namastack',
-    description: 'Reliable event-driven architecture for Spring Boot',
+    description: 'Namastack delivers production-ready infrastructure for event-driven systems - resilient, observable, and easy to integrate with Spring Boot and modern microservices, empowering teams to ship reliable distributed applications.',
     url: 'https://www.namastack.io',
     images: [
       {
