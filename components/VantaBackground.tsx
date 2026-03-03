@@ -2,16 +2,18 @@ import React, { useEffect, useRef, useState, useCallback } from 'react';
 
 declare global {
   interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     VANTA?: { TOPOLOGY?: (opts: any) => any };
+    THREE?: any;
   }
 }
 
-const CDN_P5    = 'https://cdnjs.cloudflare.com/ajax/libs/p5.js/2.0.5/p5.min.js';
-const CDN_VANTA = 'https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.topology.min.js';
+const CDN_P5    = '/vendor/p5.min.js';
+const CDN_THREE = '/vendor/three.min.js';
+const CDN_VANTA = '/vendor/vanta.topology.min.js';
 
 function loadScript(src: string): Promise<void> {
   return new Promise((resolve, reject) => {
+    if (typeof document === 'undefined') return resolve();
     if (document.querySelector(`script[src="${src}"]`)) {
       resolve();
       return;
@@ -82,8 +84,11 @@ export default function VantaBackground({
           if (!cancelled) setReady(false);
           return;
         }
+
+        await loadScript(CDN_THREE);
         await loadScript(CDN_P5);
         await loadScript(CDN_VANTA);
+
         if (!cancelled) setReady(true);
       } catch (err: unknown) {
         if (!cancelled) setError(err instanceof Error ? err.message : String(err));
@@ -101,19 +106,23 @@ export default function VantaBackground({
       vantaRef.current = null;
     }
 
-    vantaRef.current = window.VANTA.TOPOLOGY({
-      el:              containerRef.current,
-      mouseControls:   false,
-      touchControls:   false,
-      gyroControls:    false,
-      minHeight:       200.0,
-      minWidth:        200.0,
-      scale:           1.0,
-      scaleMobile:     1.0,
-      color:           0x3b82f6,
-      backgroundColor: 0x0f172a,
-      ...optionsRef.current,
-    });
+    try {
+      vantaRef.current = window.VANTA.TOPOLOGY({
+        el:              containerRef.current,
+        mouseControls:   false,
+        touchControls:   false,
+        gyroControls:    false,
+        minHeight:       200.0,
+        minWidth:        200.0,
+        scale:           1.0,
+        scaleMobile:     1.0,
+        color:           0x3b82f6,
+        backgroundColor: 0x0f172a,
+        ...optionsRef.current,
+      });
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+    }
   }, []);
 
   useEffect(() => {
