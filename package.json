@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/generate-og-png.js && node scripts/generate-logo-png.js",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
