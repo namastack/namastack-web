@@ -15,16 +15,16 @@ export const metadata: Metadata = {
     url: 'https://www.namastack.io',
     images: [
       {
-        url: 'https://www.namastack.io/og-image.png',
-        width: 1039,
-        height: 609,
+        url: 'https://www.namastack.io/og-image-v2.png',
+        width: 2066,
+        height: 1350,
         alt: 'Namastack — Reliable event-driven architecture',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://www.namastack.io/og-image.png'],
+    images: ['https://www.namastack.io/og-image-v2.png'],
   },
 }
 

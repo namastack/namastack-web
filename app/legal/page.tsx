@@ -9,15 +9,9 @@ export const metadata: Metadata = {
     url: 'https://www.namastack.io/legal',
     images: [
       {
-        url: 'https://www.namastack.io/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Namastack Legal',
-      },
-      {
-        url: 'https://www.namastack.io/og-image.svg',
-        width: 1200,
-        height: 630,
+        url: 'https://www.namastack.io/og-image-v2.png',
+        width: 2066,
+        height: 1350,
         alt: 'Namastack Legal',
       },
     ],
