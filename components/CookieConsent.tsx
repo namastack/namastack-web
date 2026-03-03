@@ -19,18 +19,10 @@ const CookieConsentComponent = () => {
   const handleConsentChange = () => {
     if (CookieConsent.acceptedCategory("analytics")) {
       setEnableGA(true);
-      console.log("GA ACTIVATED");
     } else {
       setEnableGA(false);
-      console.log("GA DEACTIVATED");
-      removeGACookies();
+      CookieConsent.eraseCookies(/^(?!cc_cookie$)/, '/', '.namastack.io');
     }
-  };
-
-  const removeGACookies = () => {
-    document.cookie = "_ga=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-    document.cookie = "_gid=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-    document.cookie = "_gat=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
   };
 
   return (
