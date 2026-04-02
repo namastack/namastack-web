@@ -11,6 +11,7 @@
     "generate-logo-png": "node scripts/generate-logo-png.js"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.18",
     "@next/third-parties": "^16.1.6",
     "framer-motion": "^12.34.3",
     "next": "^16.1.6",
