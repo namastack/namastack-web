@@ -1,26 +1,59 @@
 import type { Metadata } from 'next'
 
+const SITE_URL = 'https://www.namastack.io'
+
 export const metadata: Metadata = {
   title: 'Legal Notice – Namastack',
   description: 'Legal notice, privacy policy, and licensing information for Namastack.',
+  alternates: {
+    canonical: `${SITE_URL}/legal`,
+  },
   openGraph: {
     title: 'Legal Notice – Namastack',
     description: 'Legal notice, privacy policy, and licensing information for Namastack.',
-    url: 'https://www.namastack.io/legal',
+    url: `${SITE_URL}/legal`,
     images: [
       {
-        url: 'https://www.namastack.io/og-image-v3.png',
+        url: `${SITE_URL}/og-image-v3.png`,
         width: 1200,
         height: 630,
         alt: 'Namastack Legal',
       },
     ],
   },
+  robots: {
+    index: true,
+    follow: false,
+  },
+}
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": SITE_URL
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Legal Notice",
+      "item": `${SITE_URL}/legal`
+    }
+  ]
 }
 
 export default function LegalNoticePage() {
   return (
     <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <div className="max-w-3xl mx-auto px-6 py-20 sm:py-28">
 
         {/* Back link */}

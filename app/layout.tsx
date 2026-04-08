@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-const SITE_URL = 'https://www.namastack.io'; // Update to your production URL
+const SITE_URL = 'https://www.namastack.io';
+const OG_IMAGE = SITE_URL + '/og-image-v3.png';
 
 export const metadata: Metadata = {
   title: {
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
     template: '%s · Namastack',
   },
   description: 'Reliable event-driven architecture for Spring Boot',
-  keywords: ['namastack', 'outbox', 'spring boot', 'event-driven', 'microservices', 'transactional outbox'],
+  keywords: ['namastack', 'outbox pattern', 'spring boot', 'event-driven architecture', 'microservices', 'transactional outbox', 'distributed systems', 'reliable messaging'],
   authors: [{ name: 'Roland Beisel', url: 'mailto:info@rolandbeisel.de' }],
   icons: {
     icon: '/favicon.png',
@@ -26,25 +27,20 @@ export const metadata: Metadata = {
     siteName: 'Namastack',
     images: [
       {
-        url: SITE_URL + '/og-image.png',
+        url: OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: 'Namastack — Reliable event-driven architecture',
-      },
-      {
-        url: SITE_URL + '/og-image.svg',
-        width: 1200,
-        height: 630,
-        alt: 'Namastack Logo',
+        alt: 'Namastack — Reliable event-driven architecture for Spring Boot',
       },
     ],
     type: 'website',
+    locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Namastack',
     description: 'Reliable event-driven architecture for Spring Boot',
-    images: [SITE_URL + '/og-image.png', SITE_URL + '/og-image.svg'],
+    images: [OG_IMAGE],
   },
   robots: {
     index: true,
@@ -52,6 +48,9 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
     },
   },
 }
@@ -74,10 +73,47 @@ export default function RootLayout({
     "@type": "Organization",
     "name": "Namastack",
     "url": SITE_URL,
-    "logo": SITE_URL + '/og-image.svg',
+    "logo": OG_IMAGE,
     "sameAs": [
-      "https://github.com/namastack/namastack-outbox"
+      "https://github.com/namastack/namastack-outbox",
+      "https://github.com/namastack"
     ]
+  };
+
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Namastack",
+    "url": SITE_URL,
+    "description": "Reliable event-driven architecture for Spring Boot",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Namastack",
+      "url": SITE_URL
+    }
+  };
+
+  const softwareJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Namastack Outbox",
+    "url": "https://github.com/namastack/namastack-outbox",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Cross-platform",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "An open-source transactional outbox implementation for Spring Boot that guarantees atomic database and message publishing operations.",
+    "author": {
+      "@type": "Organization",
+      "name": "Namastack",
+      "url": SITE_URL
+    },
+    "license": "https://www.apache.org/licenses/LICENSE-2.0.html",
+    "programmingLanguage": "Java",
+    "runtimePlatform": "Spring Boot"
   };
 
   return (
@@ -88,6 +124,16 @@ export default function RootLayout({
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareJsonLd) }}
         />
         {children}
       </body>

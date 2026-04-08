@@ -38,13 +38,13 @@ const features = [
 export default function FeaturedProject() {
   return (
     <section className="py-24 sm:py-32 bg-[var(--surface)]">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="text-center mb-6"
+          className="text-center mb-16"
         >
           <p className="text-sm font-medium uppercase tracking-wider text-[var(--primary)] mb-3">
             Featured Project
@@ -58,25 +58,25 @@ export default function FeaturedProject() {
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-14">
-          {features.map((feature, i) => (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map((value, i) => (
             <motion.div
-              key={feature.title}
+              key={value.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{
                 duration: 0.5,
                 ease: [0.25, 0.46, 0.45, 0.94],
-                delay: i * 0.08,
+                delay: i * 0.1,
               }}
-              className="group rounded-xl border border-[var(--border)] bg-[var(--background)] p-6 transition-all duration-300 hover:border-[var(--primary)]/30 hover:shadow-[0_0_24px_rgba(255,222,89,0.06)]"
+              className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-6 transition-colors duration-200 hover:border-[var(--primary)]/30 hover:bg-[var(--surface-hover)]"
             >
-              <h3 className="text-base font-semibold text-white mb-2 group-hover:text-[var(--primary)] transition-colors duration-200">
-                {feature.title}
+              <h3 className="text-lg font-semibold text-white mb-2">
+                {value.title}
               </h3>
               <p className="text-sm text-[var(--muted)] leading-relaxed">
-                {feature.description}
+                {value.description}
               </p>
             </motion.div>
           ))}

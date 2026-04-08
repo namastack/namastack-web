@@ -97,16 +97,6 @@ export default function Hero() {
                 >
                   View on GitHub
                 </motion.a>
-
-                <motion.a
-                  href="#sponsoring"
-                  className="inline-flex items-center gap-2 px-8 py-3.5 border border-[var(--primary)]/30 text-[var(--primary)] font-medium rounded-lg text-base hover:border-[var(--primary)] hover:bg-[var(--primary)]/5 transition-colors duration-200"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  ❤️ Sponsor Us
-                </motion.a>
               </div>
             </motion.div>
           </motion.div>
