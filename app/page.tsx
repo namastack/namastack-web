@@ -3,6 +3,7 @@ import About from '../components/About'
 import FeaturedProject from '../components/FeaturedProject'
 import Reliability from '../components/Reliability'
 import CTA from '../components/CTA'
+import Sponsor from '../components/Sponsor'
 import Footer from '../components/Footer'
 import type { Metadata } from 'next'
 
@@ -41,6 +42,7 @@ export default function Page() {
       <FeaturedProject />
       <Reliability />
       <CTA />
+      <Sponsor />
       <Footer />
     </>
   )
