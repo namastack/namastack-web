@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+import type {Metadata} from "next";
+import { GoogleTagManager } from '@next/third-parties/google'
 import "./globals.css";
 
 const SITE_URL = 'https://www.namastack.io';
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   },
   description: 'Reliable event-driven architecture for Spring Boot',
   keywords: ['namastack', 'outbox pattern', 'spring boot', 'event-driven architecture', 'microservices', 'transactional outbox', 'distributed systems', 'reliable messaging'],
-  authors: [{ name: 'Roland Beisel', url: 'mailto:info@rolandbeisel.de' }],
+  authors: [{name: 'Roland Beisel', url: 'mailto:info@rolandbeisel.de'}],
   icons: {
     icon: '/favicon.png',
     apple: '/favicon.png',
@@ -64,8 +65,8 @@ export const viewport = {
 }
 
 export default function RootLayout({
-  children,
-}: Readonly<{
+                                     children,
+                                   }: Readonly<{
   children: React.ReactNode;
 }>) {
   const orgJsonLd = {
@@ -117,26 +118,27 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en">
+      <html lang="en">
+      <GoogleTagManager gtmId="G-7T0WYS15SK" />
       <body className="antialiased cc--elegant-black">
-        {/* Structured data for SEO */}
-        <script
+      {/* Structured data for SEO */}
+      <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
-        />
-        <script
+          dangerouslySetInnerHTML={{__html: JSON.stringify(orgJsonLd)}}
+      />
+      <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
-        />
-        <script
+          dangerouslySetInnerHTML={{__html: JSON.stringify(websiteJsonLd)}}
+      />
+      <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareJsonLd) }}
-        />
-        {children}
+          dangerouslySetInnerHTML={{__html: JSON.stringify(softwareJsonLd)}}
+      />
+      {children}
       </body>
-    </html>
+      </html>
   );
 }
