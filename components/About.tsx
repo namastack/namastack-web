@@ -40,8 +40,8 @@ export default function About() {
             What is Namastack?
           </h2>
           <p className="text-lg text-[var(--muted)] max-w-2xl mx-auto">
-            Namastack builds reliable infrastructure primitives for distributed systems.
-            We focus on the hard problems so you can focus on your product.
+            Namastack is an open-source infrastructure ecosystem focused on reliability,
+            consistency, and event-driven architectures.
           </p>
         </motion.div>
 
