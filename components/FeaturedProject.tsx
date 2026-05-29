@@ -14,6 +14,11 @@ const features = [
       'Guarantees that every database change is followed by a corresponding event, even when services crash or restart.',
   },
   {
+    title: 'Spring Modulith 2.1 Integrated',
+    description:
+      'Delegate Spring Modulith event externalization to Namastack Outbox with the official starter and outbox mode.',
+  },
+  {
     title: 'Built for Microservices',
     description:
       'Designed from the ground up for distributed architectures where inter-service communication must be consistent.',
@@ -27,11 +32,6 @@ const features = [
     title: 'Spring Boot Native',
     description:
       'First-class Spring Boot integration. Auto-configuration, starter dependencies, and familiar programming model.',
-  },
-  {
-    title: 'Community Supported',
-    description:
-      'Open source with ~300 GitHub stars and an active community of contributors and users.',
   },
 ]
 
@@ -53,9 +53,59 @@ export default function FeaturedProject() {
             Namastack Outbox
           </h2>
           <p className="text-lg text-[var(--muted)] max-w-2xl mx-auto">
-            An open-source transactional outbox implementation for Spring Boot that
-            guarantees atomic database and message publishing operations.
+            The advanced outbox engine now integrated with Spring Modulith 2.1 for
+            reliable, order-preserving event externalization in relational database
+            backed Spring applications.
           </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="mb-10 rounded-lg border border-[var(--primary)]/25 bg-[linear-gradient(135deg,rgba(255,222,89,0.1),rgba(17,17,24,0.76))] p-6 sm:p-8"
+        >
+          <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+            <div>
+              <p className="text-sm font-medium uppercase tracking-wider text-[var(--primary)] mb-3">
+                Spring Modulith Support
+              </p>
+              <h3 className="text-2xl font-bold text-white mb-3">
+                Use Namastack as the outbox behind Spring Modulith events.
+              </h3>
+              <p className="text-sm sm:text-base text-[var(--muted)] leading-relaxed">
+                When Spring Modulith applications need advanced outbox behavior,
+                event externalization can be delegated to Namastack Outbox with one
+                starter and one configuration property.
+              </p>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {['Official starter', 'Outbox mode'].map(
+                  (label) => (
+                    <span
+                      key={label}
+                      className="rounded-md border border-[var(--primary)]/20 bg-[var(--primary)]/10 px-3 py-1 text-xs font-medium text-[var(--primary)]"
+                    >
+                      {label}
+                    </span>
+                  ),
+                )}
+              </div>
+            </div>
+
+            <div className="overflow-hidden rounded-lg border border-[var(--border)] bg-black/35">
+              <div className="border-b border-[var(--border)] px-4 py-2 text-xs font-medium text-[var(--muted)]">
+                Gradle + application.properties
+              </div>
+              <pre className="overflow-x-auto p-4 text-xs sm:text-sm leading-relaxed text-white">
+                <code>{`dependencies {
+  implementation 'org.springframework.modulith:spring-modulith-starter-namastack'
+}
+
+spring.modulith.events.externalization.mode=outbox`}</code>
+              </pre>
+            </div>
+          </div>
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -70,7 +120,7 @@ export default function FeaturedProject() {
                 ease: [0.25, 0.46, 0.45, 0.94],
                 delay: i * 0.1,
               }}
-              className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-6 transition-colors duration-200 hover:border-[var(--primary)]/30 hover:bg-[var(--surface-hover)]"
+              className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6 transition-colors duration-200 hover:border-[var(--primary)]/30 hover:bg-[var(--surface-hover)]"
             >
               <h3 className="text-lg font-semibold text-white mb-2">
                 {value.title}
@@ -101,6 +151,18 @@ export default function FeaturedProject() {
           </motion.a>
 
           <motion.a
+            href="https://docs.spring.io/spring-modulith/docs/2.1.0-M4/api/org/springframework/modulith/events/namastack/package-summary.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-3.5 border border-[var(--border)] text-white font-medium rounded-lg text-base hover:border-[var(--muted)]"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.2 }}
+          >
+            Spring Modulith Support
+          </motion.a>
+
+          <motion.a
             href="https://github.com/namastack/namastack-outbox"
             target="_blank"
             rel="noopener noreferrer"
@@ -116,4 +178,3 @@ export default function FeaturedProject() {
     </section>
   )
 }
-
