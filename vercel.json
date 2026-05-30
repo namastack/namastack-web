@@ -1,14 +1,17 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "trailingSlash": true,
   "rewrites": [
+    {
+      "source": "/outbox",
+      "destination": "https://namastack-outbox.vercel.app/"
+    },
     {
       "source": "/outbox/",
       "destination": "https://namastack-outbox.vercel.app/"
     },
     {
-      "source": "/outbox/:path*/",
-      "destination": "https://namastack-outbox.vercel.app/:path*/"
+      "source": "/outbox/:path*",
+      "destination": "https://namastack-outbox.vercel.app/:path*"
     }
   ]
 }
